@@ -12,3 +12,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           tags: user/app:latest
+      - name: AWS CLI Version
+        run: |
+          aws --version
