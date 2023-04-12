@@ -15,4 +15,10 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           tags: user/app:latest
-      
+  in-container:
+    runs-on: nscloud
+    container:
+      image: grafana/mimir-build-image:goupdate-751733fe1
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
