@@ -18,7 +18,7 @@ jobs:
   in-container:
     runs-on: nscloud
     container:
-      image: grafana/mimir-build-image:goupdate-751733fe1
+      image: golang:1.20.1-bullseye
     steps:
       - name: checkout
         uses: actions/checkout@v3
