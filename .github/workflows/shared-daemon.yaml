@@ -1,0 +1,14 @@
+on: [push, workflow_dispatch]
+
+name: shared-daemon
+
+jobs:
+  ci:
+    runs-on: nscloud
+    steps:
+      - name: Start nginx
+        run: |
+          docker run --network=host nginx
+      - name: Poke nginx
+        run: |
+          curl http://localhost:80
