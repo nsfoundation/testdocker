@@ -3,13 +3,19 @@ on: [push, workflow_dispatch]
 name: shared-daemon
 
 jobs:
-  ci:
+  start-poke:
     runs-on: nscloud
     steps:
       - name: Start nginx
         run: |
-          docker run --network=host nginx -d
+          docker run -d --network=host nginx
           docker ps
+      - name: Poke nginx
+        run: |
+          curl http://localhost:80
+  poke-existing:
+    runs-on: nscloud
+    steps:
       - name: Poke nginx
         run: |
           curl http://localhost:80
