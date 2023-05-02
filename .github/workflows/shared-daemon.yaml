@@ -10,6 +10,7 @@ jobs:
         run: |
           docker run -d --network=host nginx
           docker ps
+          curl http://localhost:80
       - name: Poke nginx
         run: |
           curl http://localhost:80
