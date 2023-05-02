@@ -8,7 +8,8 @@ jobs:
     steps:
       - name: Start nginx
         run: |
-          docker run --network=host nginx
+          docker run --network=host nginx -d
+          docker ps
       - name: Poke nginx
         run: |
           curl http://localhost:80
