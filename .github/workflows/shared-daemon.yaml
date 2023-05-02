@@ -14,9 +14,3 @@ jobs:
       - name: Poke nginx
         run: |
           curl http://localhost:80
-  poke-existing:
-    runs-on: nscloud
-    steps:
-      - name: Poke nginx
-        run: |
-          curl http://localhost:80
