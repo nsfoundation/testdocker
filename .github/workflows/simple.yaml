@@ -6,10 +6,11 @@ jobs:
   ci:
     runs-on: nscloud
     steps:
-      - name: AWS CLI Version
+      - name: Env checks
         run: |
           aws --version
           docker buildx ls 
+          env
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
