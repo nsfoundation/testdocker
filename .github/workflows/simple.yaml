@@ -9,8 +9,7 @@ jobs:
       - name: AWS CLI Version
         run: |
           aws --version
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+          docker buildx ls 
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
