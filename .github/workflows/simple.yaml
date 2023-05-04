@@ -8,13 +8,13 @@ jobs:
     steps:
       - name: Env checks
         run: |
-          ulimit
+          ulimit -a
           aws --version
           docker buildx ls 
           env
-      
+
       - uses: actions/checkout@v3
-      
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
