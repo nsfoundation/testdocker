@@ -20,4 +20,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          tags: user/app:latest
+          push: true
+          tags: nscr.io/01gr1g2rpb7ahzddy3f227exq9/testdocker:latest
