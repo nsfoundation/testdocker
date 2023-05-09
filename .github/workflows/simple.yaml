@@ -12,6 +12,7 @@ jobs:
           aws --version
           docker buildx ls 
           env
+          cat ~/.docker/config.json
 
       - uses: actions/checkout@v3
 
