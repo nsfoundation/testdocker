@@ -1,0 +1,27 @@
+on: [push, workflow_dispatch]
+
+name: simple-with-matrix
+
+jobs:
+  ci:
+    matrix:
+      platform: [nscloud, nscloud-amd64, nscloud-ubuntu-22.04-amd64, nscloud-ubuntu-22.04-amd64-4x16]
+      dummy_env: [dummy1, dummy2, dummy3]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Env checks
+        env:
+          DUMMY_ENV: ${{ matrix.dummy_env }}
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
+
+      - uses: actions/checkout@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
