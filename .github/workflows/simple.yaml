@@ -22,3 +22,13 @@ jobs:
           context: .
           push: true
           tags: nscr.io/01gr1g2rpb7ahzddy3f227exq9/testdocker:latest
+  ci-gh-runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
