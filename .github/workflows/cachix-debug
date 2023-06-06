@@ -1,0 +1,45 @@
+on: [push, workflow_dispatch]
+
+name: cachix-debug
+
+jobs:
+  ci:
+    runs-on: nscloud
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
+          uname -a
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Install cachex
+        run: |
+          nix-env -iA cachix -f https://cachix.org/api/v1/install
+      - name: Cachix Authz
+        run: |
+          cachix authtoken
+          
+
+  ci-gh-runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
+          uname -a
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Install cachex
+        run: |
+          nix-env -iA cachix -f https://cachix.org/api/v1/install
+      - name: Cachex Authz
+        run: |
+          cachix authtoken
