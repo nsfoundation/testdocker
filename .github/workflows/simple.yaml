@@ -13,6 +13,7 @@ jobs:
           docker buildx ls 
           env
           cat ~/.docker/config.json
+          uname -a
 
       - uses: actions/checkout@v3
 
@@ -32,3 +33,4 @@ jobs:
           docker buildx ls 
           env
           cat ~/.docker/config.json
+          uname -a
