@@ -14,11 +14,9 @@ jobs:
           env
           cat ~/.docker/config.json
           uname -a
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - name: Install cachex
-        run: |
-          nix-env -iA cachix -f https://cachix.org/api/v1/install
+      - uses: cachix/install-nix-action@v21
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
       - name: Cachix Authz
         run: |
           cachix authtoken
@@ -35,11 +33,9 @@ jobs:
           env
           cat ~/.docker/config.json
           uname -a
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - name: Install cachex
-        run: |
-          nix-env -iA cachix -f https://cachix.org/api/v1/install
+      - uses: cachix/install-nix-action@v21
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
       - name: Cachex Authz
         run: |
           cachix authtoken
