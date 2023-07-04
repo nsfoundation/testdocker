@@ -17,13 +17,14 @@ jobs:
         uses: namespacelabs/cache-action@v0
         with:
           key: large-file
-          path: 100MB.bin
+          path: 200MB.zip
 
       - name: Download large file
         run: |
-          wget https://speed.hetzner.de/100MB.bin
+          wget http://212.183.159.230/200MB.zip
         if: steps.cache-large-file.outputs.cache-hit != 'true'
 
       - name: Use large file
         run: |
-          ls -l 100MB.bin
+          ls -l 200MB.zip
+          shasum 200MB.zip
