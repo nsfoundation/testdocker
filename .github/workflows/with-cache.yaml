@@ -1,0 +1,29 @@
+on: [push, workflow_dispatch]
+
+name: simple
+
+jobs:
+  ci:
+    runs-on: nscloud
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure access to Namespace
+        uses: namespacelabs/nscloud-setup@v0
+
+      - name: Save cache
+        id: cache-large-file
+        uses: namespacelabs/cache-action@v0
+        with:
+          key: large-file
+          path: 100MB.bin
+
+      - name: Download large file
+        run: |
+          wget https://speed.hetzner.de/100MB.bin
+        if: steps.cache-large-file.outputs.cache-hit != 'true'
+
+      - name: Use large file
+        run: |
+          ls -l 100MB.bin
