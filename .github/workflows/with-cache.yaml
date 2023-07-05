@@ -6,6 +6,8 @@ jobs:
   ci:
     runs-on: nscloud
     steps:
+      - run: env
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -13,10 +15,10 @@ jobs:
         uses: namespacelabs/nscloud-setup@v0
 
       - name: Save cache
-        id: cache-output
+        id: cache-large-file
         uses: namespacelabs/nscloud-cache-action@v0
         with:
-          key: large-file
+          key: large-file-${{github.sha}}
           path: 200MB.zip
 
       - name: Download large file
