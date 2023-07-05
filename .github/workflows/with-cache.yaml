@@ -13,8 +13,8 @@ jobs:
         uses: namespacelabs/nscloud-setup@v0
 
       - name: Save cache
-        id: cache-large-file
-        uses: namespacelabs/cache-action@v0
+        id: cache-output
+        uses: namespacelabs/nscloud-cache-action@v0
         with:
           key: large-file
           path: 200MB.zip
