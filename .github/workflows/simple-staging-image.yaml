@@ -1,0 +1,36 @@
+on: [push, workflow_dispatch]
+
+name: simple-staging-image
+
+jobs:
+  ci:
+    runs-on: nscloud-ubuntu-22.04-staging-amd64-2x4
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
+          uname -a
+
+      - uses: actions/checkout@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: nscr.io/01gr1g2rpb7ahzddy3f227exq9/testdocker:latest
+  ci-gh-runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
+          uname -a
