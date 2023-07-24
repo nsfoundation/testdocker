@@ -1,0 +1,19 @@
+on: [push, workflow_dispatch]
+
+name: features
+
+jobs:
+  ci:
+    runs-on: nscloud
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          aws --version
+          docker buildx ls 
+          env
+          cat ~/.docker/config.json
+          uname -a
+          locale
+
+      - uses: actions/checkout@v3
