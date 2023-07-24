@@ -4,7 +4,7 @@ name: features
 
 jobs:
   ci:
-    runs-on: [nscloud, nscloud-exp-locale-utf8]
+    runs-on: [nscloud-staging, nscloud-exp-locale-utf8]
     steps:
       - name: Env checks
         run: |
