@@ -6,7 +6,7 @@ jobs:
   ci:
     strategy:
       matrix:
-        platform: [nscloud, nscloud-amd64, nscloud-ubuntu-22.04-amd64, nscloud-ubuntu-22.04-amd64-4x16, nscloud-ubuntu-22.04-amd64-2x4]
+        platform: [nscloud-staging, nscloud-staging-amd64, nscloud-ubuntu-22.04-staging-amd64, nscloud-ubuntu-22.04-staging-amd64-4x16, nscloud-ubuntu-22.04-staging-amd64-2x4]
         dummy_env: [dummy1, dummy2, dummy3, dummy4, dummy5]
     runs-on: ${{ matrix.platform }}
     steps:
