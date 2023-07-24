@@ -4,7 +4,7 @@ name: features
 
 jobs:
   ci:
-    runs-on: [nscloud, nscloud-config-locale-posix]
+    runs-on: [nscloud]
     steps:
       - name: Env checks
         run: |
