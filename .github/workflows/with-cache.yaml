@@ -23,7 +23,7 @@ jobs:
 
       - name: Download large file
         run: |
-          wget http://212.183.159.230/200MB.zip
+          wget http://ipv4.download.thinkbroadband.com/200MB.zip
         if: steps.cache-large-file.outputs.cache-hit != 'true'
 
       - name: Use large file
