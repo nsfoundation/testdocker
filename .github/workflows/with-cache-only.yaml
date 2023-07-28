@@ -1,0 +1,39 @@
+on: [push, workflow_dispatch]
+
+name: With Cache
+
+jobs:
+  ci:
+    runs-on: nscloud
+    steps:
+      - run: env
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure access to Namespace
+        uses: namespacelabs/nscloud-setup@v0
+
+      - name: Restore cache
+        id: restore-large-file
+        uses: namespacelabs/nscloud-cache-action/restore@v0
+        with:
+          key: large-file-${{github.sha}}
+          path: 200MB.zip
+
+      - name: Download large file
+        run: |
+          wget http://ipv4.download.thinkbroadband.com/200MB.zip
+        if: steps.cache-large-file.outputs.cache-hit != 'true'
+
+      - name: Use large file
+        run: |
+          ls -l 200MB.zip
+          shasum 200MB.zip
+
+      - name: Save cache
+        id: cache-large-file
+        uses: namespacelabs/nscloud-cache-action/save@v0
+        with:
+          path: 200MB.zip
+          key: ${{ steps.restore-large-file.outputs.cache-primary-key }}
