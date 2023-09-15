@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Env checks
         run: |
+          sleep 600
           ulimit -a
           aws --version
           docker buildx ls 
