@@ -1,6 +1,6 @@
 on: [push, workflow_dispatch]
 
-name: With Cache
+name: With Manual Save/Restore Cache
 
 jobs:
   ci:
