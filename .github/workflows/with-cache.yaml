@@ -4,7 +4,7 @@ name: With Cache
 
 jobs:
   ci:
-    runs-on: ubuntu
+    runs-on: ubuntu-22.04
     steps:
       - run: env
 
