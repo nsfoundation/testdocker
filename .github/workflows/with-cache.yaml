@@ -4,6 +4,7 @@ name: With Cache
 
 jobs:
   ci:
+    runs-on: ubuntu
     steps:
       - run: env
 
