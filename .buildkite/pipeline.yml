@@ -20,4 +20,4 @@ steps:
     key: debug
     command: "echo 'hello'"
     plugins:
-      nsfoundation/debug-bk-plugin#v0:
+       - nsfoundation/debug-bk-plugin#v0
