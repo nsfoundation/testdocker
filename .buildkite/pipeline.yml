@@ -17,7 +17,7 @@ steps:
         cli-version: 2
         run: test
   - name: ":namespace: Debug plugin"
-    key: docker-compose
+    key: debug
     command: "echo 'hello'"
     plugins:
       nsfoundation/debug-bk-plugin#v0:
