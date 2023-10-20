@@ -16,3 +16,8 @@ steps:
         config: .buildkite/docker/docker-compose.yml
         cli-version: 2
         run: test
+  - name: ":namespace: Debug plugin"
+    key: docker-compose
+    command: "echo 'hello'"
+    plugins:
+      nsfoundation/debug-bk-plugin#v0:
