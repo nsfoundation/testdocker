@@ -1,0 +1,5 @@
+version: '3.5'
+
+services:
+  test:
+    image: nscr.io/01gr1g2rpb7ahzddy3f227exq9/test-cache:v1

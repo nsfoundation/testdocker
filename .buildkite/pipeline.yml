@@ -1,0 +1,18 @@
+agents:
+  nsc-experimental-git-mirror: "true"
+  nsc-cache-tag: buildkite:nsfoundation/testdocker
+  nsc-cache-size: 50g
+  nsc-experimental-containerd-cache-relative-path: containers
+
+env:
+  NS_DOCKERHUB_MIRROR: http://169.254.169.43:6001
+
+steps:
+  - name: ":namespace: Test compose"
+    key: docker-compose
+    command: "echo 'hello'"
+    plugins:
+      docker-compose#v4.15.0:
+        config: .buildkite/docker/docker-compose.yml
+        cli-version: 2
+        run: test
