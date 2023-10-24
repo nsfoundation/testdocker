@@ -16,4 +16,4 @@ jobs:
       - name: Build and push
         run: |
           ls /cache/
-          touch "/cache/$(date -Idate).txt"
+          touch "/cache/$(date -Iseconds).txt"
