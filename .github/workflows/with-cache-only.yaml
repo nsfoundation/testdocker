@@ -2,6 +2,9 @@ on: [push, workflow_dispatch]
 
 name: With Manual Save/Restore Cache
 
+env:
+  NAMESPACE_CACHE_URL: https://cache.github-services.fra2.nscluster.cloud/
+
 jobs:
   ci:
     runs-on: nscloud
