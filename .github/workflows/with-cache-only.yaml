@@ -16,7 +16,7 @@ jobs:
 
       - name: Restore cache
         id: restore-large-file
-        uses: namespacelabs/nscloud-cache-action/restore@265d106d404d546e25e97f7a30f5b0f940fb4460
+        uses: namespacelabs/nscloud-cache-action/restore@v0
         with:
           key: large-file-${{github.sha}}
           path: 200MB.zip
@@ -33,7 +33,7 @@ jobs:
 
       - name: Save cache
         id: cache-large-file
-        uses: namespacelabs/nscloud-cache-action/save@265d106d404d546e25e97f7a30f5b0f940fb4460
+        uses: namespacelabs/nscloud-cache-action/save@v0
         with:
           path: 200MB.zip
           key: ${{ steps.restore-large-file.outputs.cache-primary-key }}
