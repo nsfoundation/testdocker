@@ -2,9 +2,6 @@ on: [push, workflow_dispatch]
 
 name: With Manual Save/Restore Cache
 
-env:
-  NAMESPACE_CACHE_URL: https://cache.github-services.fra2.nscluster.cloud/
-
 jobs:
   ci:
     runs-on: nscloud
@@ -19,7 +16,7 @@ jobs:
 
       - name: Restore cache
         id: restore-large-file
-        uses: namespacelabs/nscloud-cache-action/restore@v0
+        uses: namespacelabs/nscloud-cache-action/restore@265d106d404d546e25e97f7a30f5b0f940fb4460
         with:
           key: large-file-${{github.sha}}
           path: 200MB.zip
@@ -36,7 +33,7 @@ jobs:
 
       - name: Save cache
         id: cache-large-file
-        uses: namespacelabs/nscloud-cache-action/save@v0
+        uses: namespacelabs/nscloud-cache-action/save@265d106d404d546e25e97f7a30f5b0f940fb4460
         with:
           path: 200MB.zip
           key: ${{ steps.restore-large-file.outputs.cache-primary-key }}
