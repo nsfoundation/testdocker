@@ -21,7 +21,7 @@ jobs:
 
       - name: Mount cache
         id: cache-downloads
-        uses: namespacelabs/nscloud-cache-action@v1-dev
+        uses: namespacelabs/nscloud-cache-action@v1
         with:
           path: downloads
 
