@@ -1,0 +1,13 @@
+on: [push, workflow_dispatch]
+
+name: simple
+
+jobs:
+  ci:
+    runs-on: namespace-profile-macos
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          env
+          uname -a
