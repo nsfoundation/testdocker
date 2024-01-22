@@ -14,6 +14,13 @@ jobs:
           env
           cat ~/.docker/config.json
           uname -a
+
+      - name: Breakpoint
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 5m
+          authorized-users: edganiukov
+
   ci-gh-runner:
     runs-on: ubuntu-latest
     steps:
