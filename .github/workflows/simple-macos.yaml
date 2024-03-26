@@ -1,4 +1,4 @@
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 name: simple-macos
 
@@ -11,3 +11,17 @@ jobs:
           ulimit -a
           env
           uname -a
+
+  ghrunners:
+    runs-on: macos-14
+    steps:
+      - name: Env checks
+        run: |
+          ulimit -a
+          env
+          uname -a
+      - name: Breakpoint
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 30m
+          authorized-users: nichtverstehen
