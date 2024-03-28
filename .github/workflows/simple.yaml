@@ -4,7 +4,10 @@ name: simple
 
 jobs:
   ci:
-    runs-on: nscloud-ubuntu-22.04-amd64-2x4
+    runs-on:
+      - nscloud-ubuntu-22.04-amd64-2x4
+      - nscloud-exp-features:privileged
+      - nscloud-exp-features:host-cgroup-namespace
     steps:
       - name: Env checks
         run: |
