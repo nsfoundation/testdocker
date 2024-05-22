@@ -8,6 +8,7 @@ jobs:
       - nscloud-ubuntu-22.04-amd64-2x4
       - nscloud-exp-features:privileged;host-cgroup-namespace
     steps:
+      - uses: namespacelabs/nscloud-checkout-action@HEAD
       - name: Env checks
         run: |
           ulimit -a
@@ -21,6 +22,7 @@ jobs:
   ci-gh-runner:
     runs-on: ubuntu-latest
     steps:
+      - uses: namespacelabs/nscloud-checkout-action@HEAD
       - name: Env checks
         run: |
           ulimit -a
