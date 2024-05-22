@@ -16,12 +16,7 @@ jobs:
           env
           cat ~/.docker/config.json
           uname -a
-
-      - name: Breakpoint
-        uses: namespacelabs/breakpoint-action@v0
-        with:
-          duration: 5m
-          authorized-users: edganiukov,nichtverstehen
+      - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
 
   ci-gh-runner:
     runs-on: ubuntu-latest
@@ -34,3 +29,4 @@ jobs:
           env
           cat ~/.docker/config.json
           uname -a
+      - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
