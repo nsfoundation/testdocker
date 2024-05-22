@@ -6,6 +6,7 @@ jobs:
   ci:
     runs-on:
       - nscloud-ubuntu-22.04-amd64-2x4
+      - nscloud-git-mirror-5gb
       - nscloud-exp-features:privileged;host-cgroup-namespace
     steps:
       - uses: namespacelabs/nscloud-checkout-action@HEAD
@@ -22,7 +23,7 @@ jobs:
   ci-gh-runner:
     runs-on: ubuntu-latest
     steps:
-      - uses: namespacelabs/nscloud-checkout-action@HEAD
+      - uses: actions/checkout@v4
       - name: Env checks
         run: |
           ulimit -a
