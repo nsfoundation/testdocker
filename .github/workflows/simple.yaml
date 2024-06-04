@@ -18,6 +18,7 @@ jobs:
           env
           cat ~/.docker/config.json
           uname -a
+          git config --unset-all extensions.worktreeconfig
       - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
 
   ci-gh-runner:
