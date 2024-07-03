@@ -15,5 +15,5 @@ jobs:
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
       - run: |
-          DOCKER_BUILDKIT=1 docker buildx build --provenance false --pull --push --platform linux/amd64 --load --cache-to type=inline --cache-from type=registry,ref=ghcr.io/nsfoundation/testdocker:latest -t ghcr.io/nsfoundation/testdocker:latest -t ghcr.io/nsfoundation/testdocker:latest -f ./Dockerfile .
+          DOCKER_BUILDKIT=1 docker buildx build --provenance false --pull --push --platform linux/amd64 --cache-to type=inline --cache-from type=registry,ref=ghcr.io/nsfoundation/testdocker:latest -t ghcr.io/nsfoundation/testdocker:latest -t ghcr.io/nsfoundation/testdocker:latest -f ./Dockerfile .
       
