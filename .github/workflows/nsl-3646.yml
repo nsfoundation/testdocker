@@ -1,0 +1,19 @@
+on: [workflow_dispatch]
+
+name: nsl3646
+
+jobs:
+  ci:
+    runs-on:
+      - nscloud-ubuntu-22.04-amd64-2x4
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - run: |
+          DOCKER_BUILDKIT=1 docker buildx build --provenance false --pull --platform linux/amd64 --load --cache-to type=inline --cache-from type=registry,ref=ghcr.io/nsfoundation/testdocker:latest -t ghcr.io/nsfoundation/testdocker:latest -t ghcr.io/nsfoundation/testdocker:latest -f ./Dockerfile .
+      
