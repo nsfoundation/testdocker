@@ -5,6 +5,7 @@ name: simple-with-matrix
 jobs:
   ci:
     strategy:
+      max-parallel: 1
       matrix:
         platform: [nscloud, nscloud-amd64, nscloud-ubuntu-22.04-amd64, nscloud-ubuntu-22.04-amd64-4x16, nscloud-ubuntu-22.04-amd64-2x4]
         dummy_env: [dummy1, dummy2, dummy3]
