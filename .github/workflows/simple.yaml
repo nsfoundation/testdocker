@@ -8,32 +8,10 @@ name: simple
 
 jobs:
   ci:
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-2x4-with-cache
-      - nscloud-git-mirror-5gb
-      - nscloud-exp-features:privileged;host-cgroup-namespace
-    steps:
-      - uses: namespacelabs/nscloud-checkout-action@HEAD
-      - name: Env checks
-        run: |
-          ulimit -a
-          aws --version
-          docker buildx ls 
-          env
-          cat ~/.docker/config.json
-          uname -a
-      - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
-
-  ci-gh-runner:
-    runs-on: ubuntu-latest
+    runs-on: [kirill, self-hosted, macOS, ARM64]
     steps:
       - uses: actions/checkout@v4
       - name: Env checks
         run: |
-          ulimit -a
-          aws --version
-          docker buildx ls 
-          env
-          cat ~/.docker/config.json
           uname -a
-      - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
+          env
