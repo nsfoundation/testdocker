@@ -1,4 +1,8 @@
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 name: simple-with-matrix
 
@@ -7,7 +11,14 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        platform: [nscloud, nscloud-amd64, nscloud-ubuntu-22.04-amd64, nscloud-ubuntu-22.04-amd64-4x16, nscloud-ubuntu-22.04-amd64-2x4]
+        platform:
+          [
+            nscloud,
+            nscloud-amd64,
+            nscloud-ubuntu-22.04-amd64,
+            nscloud-ubuntu-22.04-amd64-4x16,
+            nscloud-ubuntu-22.04-amd64-2x4,
+          ]
         dummy_env: [dummy1, dummy2, dummy3]
     runs-on: ${{ matrix.platform }}
     steps:
@@ -27,24 +38,24 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          
+
   job1:
     runs-on: nscloud-ubuntu-22.04-amd64-4x16
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-    
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+
   job2:
     needs: job1
     runs-on: nscloud-ubuntu-22.04-amd64-4x16
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        context: .
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .

@@ -1,4 +1,8 @@
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 name: cachix-debug
 
@@ -20,8 +24,7 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: ns
-          authToken: 'test'
-          
+          authToken: "test"
 
   ci-gh-runner:
     runs-on: ubuntu-latest
@@ -40,4 +43,4 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: ns
-          authToken: 'test'
+          authToken: "test"
