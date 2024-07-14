@@ -8,21 +8,8 @@ name: simple-arm64
 
 jobs:
   ci:
-    runs-on: nscloud-arm64 #Expect this to fail in staging, as arm64 capacity might not be available
+    runs-on: [kirill, act]
     steps:
       - name: Env checks
         run: |
-          ulimit -a
-          aws --version
-          docker buildx ls 
           env
-          cat ~/.docker/config.json
-
-      - uses: actions/checkout@v3
-
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: nscr.io/01gr1g2rpb7ahzddy3f227exq9/testdocker:latest
