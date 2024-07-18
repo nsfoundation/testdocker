@@ -23,6 +23,11 @@ jobs:
           cat ~/.docker/config.json
           uname -a
       - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
+      - name: Breakpoint if tests failed
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 30m
+          authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
 
   ci-gh-runner:
     runs-on: ubuntu-latest
@@ -37,3 +42,8 @@ jobs:
           cat ~/.docker/config.json
           uname -a
       - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
+      - name: Breakpoint if tests failed
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 30m
+          authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
