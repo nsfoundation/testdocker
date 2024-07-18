@@ -11,7 +11,6 @@ jobs:
     runs-on:
       - nscloud-ubuntu-22.04-amd64-2x4-with-cache
       - nscloud-git-mirror-5gb
-      - nscloud-exp-features:privileged;host-cgroup-namespace
     steps:
       - uses: namespacelabs/nscloud-checkout-action@HEAD
       - name: Env checks
