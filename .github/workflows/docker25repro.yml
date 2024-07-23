@@ -1,0 +1,50 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+name: docker25-load-image-repro
+
+jobs:
+  build-image:
+    runs-on: 
+      - namespace-profile-with-caching
+    steps:
+      - uses: namespacelabs/nscloud-checkout-action@HEAD
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          tags: test-image:latest
+          platforms: linux/amd64,linux/arm64
+          load: true
+      - run: docker save test-image:latest > ./test-image.tar
+      - uses: namespace-actions/upload-artifact@v0
+        with:
+          name: test-image
+          path: ./test-image.tar
+      - name: Breakpoint if tests failed
+        if: failure()
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 30m
+          authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
+
+  load-image:
+    runs-on:
+      - namespace-profile-with-caching
+    steps:
+      - uses: namespacelabs/nscloud-checkout-action@HEAD
+      - uses: namespace-actions/download-artifact@v0
+        with:
+          name: test-image
+          path: /tmp/test-image.tar
+      - run: docker load --input /tmp/test-image.tar
+      - run: kind load docker-image test-image
+      - name: Breakpoint if tests failed
+        if: failure()
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 30m
+          authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
