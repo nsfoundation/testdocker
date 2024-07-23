@@ -17,9 +17,7 @@ jobs:
           uname -a
 
   macv2:
-    runs-on:
-      - nscloud-macos-sonoma-arm64-6x14
-      - nscloud-exp-features:use-macv2
+    runs-on: namespace-profile-macv2
     steps:
       - name: Env checks
         run: |
@@ -35,8 +33,3 @@ jobs:
           ulimit -a
           env
           uname -a
-      - name: Breakpoint
-        uses: namespacelabs/breakpoint-action@v0
-        with:
-          duration: 30m
-          authorized-users: nichtverstehen
