@@ -44,6 +44,8 @@ jobs:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1
       - run: docker load --input /tmp/test-image.tar
+      - run: docker pull busybox:1.36.1
+      - run: docker pull rancher/rancher-webhook:v0.4.2
       - run: kind create cluster
       - run: kind load docker-image busybox:1.36.1
       - run: kind load docker-image test-image
