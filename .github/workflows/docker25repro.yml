@@ -40,7 +40,7 @@ jobs:
       - uses: namespace-actions/download-artifact@v0
         with:
           name: test-image
-          path: /tmp/test-image.tar
+          path: /tmp
       - run: docker load --input /tmp/test-image.tar
       - run: kind load docker-image test-image
       - name: Breakpoint if tests failed
