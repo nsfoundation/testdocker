@@ -32,6 +32,7 @@ jobs:
           authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
 
   load-image:
+    needs: build-image
     runs-on:
       - namespace-profile-with-caching
     steps:
