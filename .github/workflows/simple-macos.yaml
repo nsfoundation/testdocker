@@ -17,7 +17,9 @@ jobs:
           uname -a
 
   macv2:
-    runs-on: [nscloud-macos-sonoma-arm64-6x14, nscloud-exp-features:use-macv2]
+    runs-on:
+      - nscloud-macos-sonoma-arm64-6x14
+      - nscloud-exp-features:use-macv2
     steps:
       - name: Env checks
         run: |
