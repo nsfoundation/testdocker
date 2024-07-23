@@ -45,7 +45,9 @@ jobs:
         uses: helm/kind-action@v1
       - run: docker load --input /tmp/test-image.tar
       - run: kind create cluster
+      - run: kind load docker-image busybox:1.36.1
       - run: kind load docker-image test-image
+      - run: kind load docker-image rancher/rancher-webhook:v0.4.2
       - name: Breakpoint if tests failed
         if: failure()
         uses: namespacelabs/breakpoint-action@v0
