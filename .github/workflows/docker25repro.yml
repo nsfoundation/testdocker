@@ -30,8 +30,11 @@ jobs:
         with:
           duration: 30m
           authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
-
+          
   load-image:
+    strategy:
+      matrix:
+        runner: [namespace-profile-with-caching, namespace-profile-default]
     needs: build-image
     runs-on:
       - namespace-profile-with-caching
