@@ -11,7 +11,7 @@ jobs:
     runs-on: 
       - namespace-profile-with-caching
     steps:
-      - uses: namespacelabs/nscloud-checkout-action@HEAD
+      - uses: actions/checkout@v5
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
