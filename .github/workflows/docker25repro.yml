@@ -11,7 +11,7 @@ jobs:
     runs-on: 
       - namespace-profile-with-caching
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -39,7 +39,7 @@ jobs:
     runs-on:
       - ${{ matrix.runner }}
     steps:
-      - uses: namespacelabs/nscloud-checkout-action@HEAD
+      - uses: actions/checkout@v4
       - uses: namespace-actions/download-artifact@v0
         with:
           name: test-image
