@@ -37,7 +37,7 @@ jobs:
         runner: [namespace-profile-with-caching, namespace-profile-default]
     needs: build-image
     runs-on:
-      - namespace-profile-with-caching
+      - ${{ matrix.runner }}
     steps:
       - uses: namespacelabs/nscloud-checkout-action@HEAD
       - uses: namespace-actions/download-artifact@v0
