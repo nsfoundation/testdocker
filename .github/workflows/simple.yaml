@@ -24,6 +24,8 @@ jobs:
       - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
       - name: Breakpoint if tests failed
         uses: namespacelabs/breakpoint-action@v0
+        env:
+          GITHUB_TOKEN_2: ${{ github.token }}
         with:
           duration: 30m
           authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
@@ -43,6 +45,8 @@ jobs:
       - run: git clone https://token:${{secrets.REPO_KUBERNETES_INFRA_GITHUB_TOKEN}}@github.com/namespacelabs/internal.git
       - name: Breakpoint if tests failed
         uses: namespacelabs/breakpoint-action@v0
+        env:
+          GITHUB_TOKEN_2: ${{ github.token }}
         with:
           duration: 30m
           authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo
