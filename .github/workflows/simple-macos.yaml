@@ -24,6 +24,9 @@ jobs:
           ulimit -a
           env
           uname -a
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.11.1'
       - name: Breakpoint
         if: inputs.breakpoint || failure() && github.ref_name == 'main'
         uses: namespacelabs/breakpoint-action@v0
