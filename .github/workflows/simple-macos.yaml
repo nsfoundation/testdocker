@@ -3,6 +3,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      breakpoint:
+        description: "Stop for debugging"
+        required: false
+        type: boolean
+      run_on_ghrunners:
+        description: "Also run on GitHub-hosted runners"
+        required: false
+        type: boolean
 
 name: simple-macos
 
@@ -15,18 +24,16 @@ jobs:
           ulimit -a
           env
           uname -a
-
-  macv2:
-    runs-on: namespace-profile-macv2
-    steps:
-      - name: Env checks
-        run: |
-          ulimit -a
-          env
-          uname -a
+      - name: Breakpoint
+        if: inputs.breakpoint || failure() && github.ref_name == 'main'
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 15m
+          authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo,attilaolah,pavolmarko
 
   ghrunners:
     runs-on: macos-14
+    if: inputs.run_on_ghrunners
     steps:
       - name: Env checks
         run: |
