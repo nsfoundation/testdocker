@@ -20,8 +20,8 @@ jobs:
 
       - name: Touch
         run: |
-          ls /cache/
-          touch "/cache/$(date -Iseconds).txt"
+          ls "$NSC_CACHE_PATH"
+          touch "$NSC_CACHE_PATH/$(date -Iseconds).txt"
 
       - name: Mount cache
         id: cache-downloads
