@@ -16,14 +16,24 @@ on:
 name: simple-macos
 
 jobs:
-  ci:
-    runs-on: namespace-profile-macos
+  env:
+    strategy:
+      matrix:
+        release: ["", "-sequoia", "-tahoe"]
+        channel: ["stable", "preview"]
+      fail-fast: false
+
+    runs-on:
+      - namespace-profile-macos${{matrix.release}}
+      - namespace-features:macos.channel=${{matrix.channel}}
+
     steps:
       - name: Env checks
         run: |
           ulimit -a
           env
           uname -a
+          ls -l /Applications
       - name: Breakpoint
         if: inputs.breakpoint || failure() && github.ref_name == 'main'
         uses: namespacelabs/breakpoint-action@v0
