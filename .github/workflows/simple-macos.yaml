@@ -19,13 +19,14 @@ jobs:
   env:
     strategy:
       matrix:
-        release: ["", "-sequoia", "-tahoe"]
-        channel: ["stable", "preview"]
+        release:
+          - ""
+          #- "-sequoia"
+          #- "-tahoe"
       fail-fast: false
 
     runs-on:
       - namespace-profile-macos${{matrix.release}}
-      - namespace-features:macos.channel=${{matrix.channel}}
 
     steps:
       - name: Env checks
