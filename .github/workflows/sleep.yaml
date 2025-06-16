@@ -1,0 +1,24 @@
+on:
+  workflow_dispatch:
+
+name: just sleep
+
+jobs:
+  sleep:
+    runs-on:
+      - nscloud-ubuntu-22.04-amd64-2x4-with-cache
+    steps:
+      - run: |
+          echo sleeping 1m
+          sleep 60
+          echo done sleeping
+
+  breakpoint:
+    runs-on:
+      - nscloud-ubuntu-22.04-amd64-2x4-with-cache
+    steps:
+      - name: Breakpoint
+        uses: namespacelabs/breakpoint-action@v0
+        with:
+          duration: 1m
+          authorized-users: nichtverstehen
