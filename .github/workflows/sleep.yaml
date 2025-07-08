@@ -15,7 +15,8 @@ jobs:
           echo sleeping 30s
           sleep 30
           echo done sleeping
-      - run: |
+      - name: Nice run
+        run: |
           echo sleeping 30s
           sleep 30
           echo done sleeping
