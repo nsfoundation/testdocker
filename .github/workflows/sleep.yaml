@@ -6,8 +6,11 @@ name: just sleep
 jobs:
   sleep:
     runs-on:
-      - nscloud-ubuntu-22.04-amd64-2x4-with-cache
+      - kirill-local
+      #- nscloud-ubuntu-22.04-amd64-2x4-with-cache
     steps:
+      - run: |
+          env
       - run: |
           echo sleeping 1m
           sleep 60
@@ -15,7 +18,8 @@ jobs:
 
   breakpoint:
     runs-on:
-      - nscloud-ubuntu-22.04-amd64-2x4-with-cache
+      - kirill-local
+      #- nscloud-ubuntu-22.04-amd64-2x4-with-cache
     steps:
       - name: Breakpoint
         uses: namespacelabs/breakpoint-action@v0
