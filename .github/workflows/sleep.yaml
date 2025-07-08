@@ -11,6 +11,11 @@ jobs:
     steps:
       - run: |
           env
+      - name: Try cache
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: sleepy
       - run: |
           echo sleeping 30s
           sleep 30
@@ -21,13 +26,13 @@ jobs:
           sleep 30
           echo done sleeping
 
-  breakpoint:
-    runs-on:
-      - kirill-local
-      #- nscloud-ubuntu-22.04-amd64-2x4-with-cache
-    steps:
-      - name: Breakpoint
-        uses: namespacelabs/breakpoint-action@v0
-        with:
-          duration: 1m
-          authorized-users: nichtverstehen
+  # breakpoint:
+  #   runs-on:
+  #     - kirill-local
+  #     #- nscloud-ubuntu-22.04-amd64-2x4-with-cache
+  #   steps:
+  #     - name: Breakpoint
+  #       uses: namespacelabs/breakpoint-action@v0
+  #       with:
+  #         duration: 1m
+  #         authorized-users: nichtverstehen
