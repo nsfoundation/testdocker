@@ -21,8 +21,8 @@ jobs:
       matrix:
         release:
           - ""
-          #- "-sequoia"
-          #- "-tahoe"
+          - "-sequoia"
+          - "-tahoe"
       fail-fast: false
 
     runs-on:
@@ -35,6 +35,7 @@ jobs:
           env
           uname -a
           ls -l /Applications
+          xcrun simctl list
       - name: Breakpoint
         if: inputs.breakpoint || failure() && github.ref_name == 'main'
         uses: namespacelabs/breakpoint-action@v0
@@ -43,7 +44,7 @@ jobs:
           authorized-users: edganiukov,hugosantos,n-g,htr,nichtverstehen,gmichelo,attilaolah,pavolmarko
 
   ghrunners:
-    runs-on: macos-14
+    runs-on: macos-15
     if: inputs.run_on_ghrunners
     steps:
       - name: Env checks
@@ -51,6 +52,7 @@ jobs:
           ulimit -a
           env
           uname -a
+          xcrun simctl list
       - name: Breakpoint
         if: inputs.breakpoint || failure() && github.ref_name == 'main'
         uses: namespacelabs/breakpoint-action@v0
