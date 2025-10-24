@@ -10,7 +10,7 @@ jobs:
       - nscloud-ubuntu-22.04-amd64-2x4-with-cache
       - nscloud-git-mirror-5gb
     steps:
-      - uses: namespacelabs/nscloud-checkout-action@HEAD
+      - uses: namespacelabs/nscloud-checkout-action@NSL-6774
       - name: Env checks
         run: |
           ulimit -a
