@@ -28,9 +28,7 @@ jobs:
     steps:
       - name: Env checks
         run: |
-          ulimit -a
-          env
-          uname -a
+          xcode-select -p
           ls -l /Applications
           xcrun simctl list
         shell: bash -ieo pipefail {0}
