@@ -31,6 +31,7 @@ jobs:
           xcode-select -p
           ls -l /Applications
           xcrun simctl list
+        shell: bash -ieo pipefail {0}
       - name: Breakpoint
         if: inputs.breakpoint || failure() && github.ref_name == 'main'
         uses: namespacelabs/breakpoint-action@v0
